@@ -1,1 +1,3 @@
-This repository is for tracking my learning path in Data Structures using the C language
+# Data Structures
+=================
+This repository is for tracking my learning journey in Data Structures using the C language
