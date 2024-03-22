@@ -9,4 +9,4 @@ Each node in this type of list contains two values, the data that its meant to s
 >
 > Each struct will have and integer called value and a pointer to a node called next.
 
-![Struct of Node for Singly Linked List](LinkedList/SinglyLinkedList/images/03-22_17-02_code.png)
+![Struct of Node for Singly Linked List](LinkedList/SinglyLinkedlist/images/03-22_17-02_code.png)
