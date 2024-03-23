@@ -7,6 +7,9 @@ typedef struct node {
   struct node *next;
 } node_t;
 
+void insert(node_t **al){
+
+}
 void print(node_t *node){
   node_t *current = node;
   while(current != NULL){
@@ -18,13 +21,6 @@ int main(int argc, char *argv[]) {
   printf("Hello, world!\n");
 
   node_t *head = NULL;
-  head = (node_t *)malloc(sizeof(node_t));
-
-  head->val = 1;
-  head->next = (node_t *)malloc(sizeof(node_t));
-  head->next->val = 2;
-  head->next->next = (node_t *)malloc(sizeof(node_t));
-  head->next->next->val = 3;
-
+  
   print(head);
 }
