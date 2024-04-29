@@ -4,14 +4,16 @@
 
 typedef struct node {
   int val;
+  char *name;
   struct node *next;
 } node_t;
 
-int add_end(node_t *head, int value) {
-  node_t *current = head;
-  if (current->val == 0) {
-    current->val = value;
-    current->next = NULL;
+void add_end(node_t **head, int value, char *string) {
+  node_t *current = *head;
+  if (*head == NULL) {
+    *head = malloc(sizeof(node_t));
+    (*head)->val = value;
+    (*head)->next = NULL;
   } else {
     while (current->next != NULL) {
       current = current->next;
@@ -20,28 +22,47 @@ int add_end(node_t *head, int value) {
     current->next->val = value;
     current->next->next = NULL;
   }
-  return current->val;
 }
-int remove_end(node_t *head) {
-  node_t *current = head;
+
+void add_start(node_t **head, int value, char *name) {
+  node_t *new_head = malloc(sizeof(node_t));
+  new_head->val = value;
+  new_head->name = name;
+  new_head->next = *head;
+  *head = new_head;
+}
+void remove_end(node_t **head) {
+  if (*head == NULL) {
+    printf("The list is empty");
+    return;
+  }
+  node_t *current = *head;
   node_t *prev;
   while (current->next != NULL) {
     prev = current;
     current = current->next;
   }
-  int removed_elem = current->val;
   prev->next = NULL;
   free(current);
-  return removed_elem;
 }
-int add_first(node_t *head, int val) {
+void add_first(node_t **head, int val, char *name) {
+  if (*head == NULL) {
+    *head = malloc(sizeof(node_t));
+    (*head)->val = val;
+    (*head)->name = name;
+    (*head)->next = NULL;
+    return;
+  }
   node_t *new_head = malloc(sizeof(node_t));
   new_head->val = val;
-  new_head->next = head;
-  head = new_head;
-  return val;
+  new_head->next = *head;
+  *head = new_head;
 }
 void print(node_t *head) {
+  if (head == NULL) {
+    printf("The list is empty\n");
+    return;
+  }
   node_t *current = head;
   while (current != NULL) {
     printf("%d ", current->val);
@@ -50,21 +71,27 @@ void print(node_t *head) {
   printf("\n");
 }
 int main(int argc, char *argv[]) {
-  printf("Hello, world!\n");
 
-  node_t *head = malloc(sizeof(node_t));
-
-  add_end(head, 5);
-  add_end(head, 6);
-  add_end(head, 7);
+  node_t *head = NULL;
 
   print(head);
 
-  remove_end(head);
+  add_start(&head, 5, "July");
+  add_end(&head, 6, "Juan");
+  add_end(&head, 7, "Pedro");
+  add_end(&head, 8, "Fernando");
 
   print(head);
 
-  add_first(head, 4);
+  remove_end(&head);
+
+  print(head);
+
+  add_first(&head, 4, "Jose");
+
+  print(head);
+
+  add_start(&head, 3, "Maria");
 
   print(head);
   return 0;
