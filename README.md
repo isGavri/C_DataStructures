@@ -72,3 +72,18 @@ We will also implement functions to:
 ![Add to the start function](images/add_start_04-29.png)
 
 * Adding at the end
+
+> Same situation as when we print, we need to get to the last node, in the case of the list being empty we will need to create a new node so we have to recieve a pointer to the pointer to the first element, and the arguments that we want the function to have
+
+I will start to be shorter while explaining because we have already talked about the concepts  so ill just give a short explanation and the full fuction code
+
+> We need to check if the list is empty and in that case we need to create a new node and assign values
+
+> And if not we just get to the last element, create a node and make the old tail->next point to the newly created node
+
+![Add to the end of the function](images/add_end_04-30.png)
+
+* Adding at a specific position
+
+> As this is no array we will one based index, so the first element is 1 second element 2 and so on so on. <br>
+> We also need to validate that the position we are trying to insert this in is a valid poisition, eg. we need to have at least 3 nodes in order to insert at positions from 1 to 4.
